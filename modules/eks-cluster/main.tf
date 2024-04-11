@@ -59,6 +59,10 @@ module "eks" {
       max_size     = 3
       desired_size = 2
 
+      # min_size     = 0
+      # max_size     = 0
+      # desired_size = 0
+
       iam_role_additional_policies = [
         # Required by Karpenter
         "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
@@ -70,16 +74,24 @@ module "eks" {
   # eks configmap aws-auth에 콘솔 사용자 혹은 역할을 등록
   manage_aws_auth_configmap = true
 
+  # aws_auth_users = [
+  #   {
+  #     userarn  = "arn:aws:iam::<AWS어카운트ID>:user/admin"
+  #     username = "admin"
+  #     groups   = ["system:masters"]
+  #   },
+  # ]
+
   aws_auth_users = [
     {
-      userarn  = "arn:aws:iam::<AWS어카운트ID>:user/admin"
-      username = "admin"
+      userarn  = "arn:aws:iam::381492074864:user/yckim92-second"
+      username = "yckim92-second"
       groups   = ["system:masters"]
     },
   ]
 
   aws_auth_accounts = [
-    "<AWS어카운트ID>"
+    "381492074864"
   ]
 }
 
