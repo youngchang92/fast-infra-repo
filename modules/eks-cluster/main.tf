@@ -50,13 +50,13 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      instance_types = ["t3.large"]
+      instance_types = ["t3.xlarge"]
       create_security_group = false
       create_launch_template = false     # do not remove
       launch_template_name = ""          # do not remove
 
       min_size     = 2
-      max_size     = 3
+      max_size     = 4
       desired_size = 2
 
       # min_size     = 0
